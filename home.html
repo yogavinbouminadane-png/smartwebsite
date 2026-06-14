@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>yogavin hub</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    margin:0;
+    padding:0;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+}
+
+h1{
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+.card{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    padding:20px;
+    border-radius:15px;
+    color:white;
+}
+
+input, select{
+    width:100%;
+    padding:10px;
+    margin-top:8px;
+    border:none;
+    border-radius:8px;
+}
+
+button{
+    width:100%;
+    margin-top:10px;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    background:white;
+    color:black;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ddd;
+}
+
+.result{
+    margin-top:10px;
+    padding:10px;
+    background:rgba(0,0,0,0.2);
+    border-radius:8px;
+    white-space:pre-wrap;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🚀 yogavin hub</h1>
+
+<div class="container">
+
+<!-- WORD MEANING -->
+<div class="card">
+<h2>📖 Word Meaning</h2>
+<form method="POST">
+<input type="text" name="word" placeholder="Enter word">
+<button>Search</button>
+</form>
+<div class="result">{{ meaning }}</div>
+</div>
+
+<!-- TEMPERATURE -->
+<div class="card">
+<h2>🌡️ Temperature</h2>
+<form method="POST">
+<input type="text" name="city" placeholder="Enter city">
+<button>Check</button>
+</form>
+<div class="result">{{ temperature }}</div>
+</div>
+
+<!-- RECIPE -->
+<div class="card">
+<h2>🍳 Cooking Recipe</h2>
+<form method="POST">
+<input type="text" name="food" placeholder="Enter food">
+<button>Find Recipe</button>
+</form>
+<div class="result">{{ recipe }}</div>
+</div>
+
+<!-- TRANSLATOR -->
+<div class="card">
+<h2>🌐 Translator (All Languages)</h2>
+
+<form method="POST">
+<input type="text" name="text" placeholder="Enter text">
+
+<select name="language">
+{% for name, code in languages.items() %}
+<option value="{{ code }}">{{ name.title() }}</option>
+{% endfor %}
+</select>
+
+<button>Translate</button>
+</form>
+
+<div class="result">{{ translation }}</div>
+</div>
+
+</div>
+
+</body>
+</html>
+
